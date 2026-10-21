@@ -1,67 +1,19 @@
 
 import React, { useState } from "react";
+import faqData from "../data/faq.json";
 import "../styles/FAQ.css";
 
-const faqData = [
-  {
-    category: "Services",
-    question: "What services does KSquare Softtech provide?",
-    answer:
-      "KSquare Softtech provides website development, mobile app development, digital marketing, UI/UX design, video editing, software solutions, and IT training services."
-  },
-  {
-    category: "Services",
-    question: "Do you develop custom websites for businesses?",
-    answer:
-      "Yes! We develop responsive, modern, and SEO-friendly websites tailored to your business requirements, brand identity, and target audience."
-  },
-  {
-    category: "Training",
-    question: "What courses are available at KK Academy?",
-    answer:
-      "We offer Full Stack Development (MERN), Data Science, Data Analytics, Python, Digital Marketing, UI/UX Design, and other industry-focused IT courses."
-  },
-  {
-    category: "Training",
-    question: "Do you provide practical training and real-time projects?",
-    answer:
-      "Yes! Our training focuses on hands-on practice, assignments, mini projects, and real-world project experience to help students develop practical skills."
-  },
-  {
-    category: "Internship",
-    question: "Do you offer internship opportunities?",
-    answer:
-      "Yes! Internship opportunities are available in selected technical domains. Contact our team to learn about current openings, eligibility, duration, and fees."
-  },
-  {
-    category: "Projects",
-    question: "How can I start a project with KSquare Softtech?",
-    answer:
-      "Contact us through our website, phone, or WhatsApp. Share your project requirements, and our team will discuss the scope, timeline, and estimated cost with you."
-  },
-  {
-    category: "Support",
-    question: "Do you provide website maintenance and support?",
-    answer:
-      "Yes! Website maintenance, bug fixes, content updates, performance improvements, and technical support can be arranged according to your project requirements."
-  },
-  {
-    category: "Contact",
-    question: "How can I contact your team?",
-    answer:
-      "You can reach our team through the Contact page on our website or through our official phone number and email address."
-  }
-];
-
-const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+function FAQ() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [activeQuestion, setActiveQuestion] = useState(null);
 
+  // Categories are generated from JSON data
   const categories = [
     "All",
-    ...new Set(faqData.map((item) => item.category))
+    ...new Set(faqData.map((item) => item.category)),
   ];
 
+  // Filter questions using the selected category
   const filteredFAQs =
     activeCategory === "All"
       ? faqData
@@ -69,50 +21,51 @@ const FAQ = () => {
           (item) => item.category === activeCategory
         );
 
-  const toggleFAQ = (index) => {
-    setActiveIndex((current) => (current === index ? null : index));
+  // Open or close an FAQ
+  const toggleFAQ = (question) => {
+    setActiveQuestion((current) =>
+      current === question ? null : question
+    );
   };
 
   return (
-    <section className="faq-section" id="faq">
-      <div className="faq-bg-orb faq-orb-one"></div>
-      <div className="faq-bg-orb faq-orb-two"></div>
+    <section className="ks-faq" id="faq">
+      <div className="ks-faq-container">
 
-      <div className="faq-container">
-        {/* Section Heading */}
-        <div className="faq-heading">
-          <span className="faq-eyebrow">
-            <span className="faq-eyebrow-dot"></span>
-            GOT QUESTIONS?
+        {/* Heading */}
+        <header className="ks-faq-heading">
+          <span className="ks-faq-label">
+            <span className="ks-faq-label-dot" />
+            FREQUENTLY ASKED QUESTIONS
           </span>
 
           <h2>
-            Frequently Asked
-            <span className="faq-gradient-text"> Questions</span>
+            Got Questions?
+            <span> We Have Answers.</span>
           </h2>
 
           <p>
             Everything you need to know about our services,
-            training programs, internships, and projects.
+            digital solutions, and projects.
           </p>
-        </div>
+        </header>
 
         {/* Category Filters */}
         <div
-          className="faq-filters"
+          className="ks-faq-filters"
           role="group"
-          aria-label="Filter FAQs by category"
+          aria-label="Filter questions by category"
         >
           {categories.map((category) => (
             <button
               type="button"
               key={category}
-              className={`faq-filter ${
+              className={`ks-faq-filter ${
                 activeCategory === category ? "active" : ""
               }`}
               onClick={() => {
                 setActiveCategory(category);
-                setActiveIndex(0);
+                setActiveQuestion(null);
               }}
             >
               {category}
@@ -121,45 +74,52 @@ const FAQ = () => {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="faq-list">
+        <div className="ks-faq-list">
           {filteredFAQs.map((item, index) => {
-            const isOpen = activeIndex === index;
-            const answerId = `faq-answer-${index}`;
+            const isOpen =
+              activeQuestion === item.id;
+
+            const answerId = `ks-faq-answer-${item.id}`;
 
             return (
               <article
-                className={`faq-item ${isOpen ? "open" : ""}`}
-                key={item.question}
+                className={`ks-faq-item ${
+                  isOpen ? "is-open" : ""
+                }`}
+                key={item.id}
               >
                 <button
                   type="button"
-                  className="faq-question"
-                  onClick={() => toggleFAQ(index)}
+                  className="ks-faq-question"
                   aria-expanded={isOpen}
                   aria-controls={answerId}
+                  onClick={() => toggleFAQ(item.id)}
                 >
-                  <span className="faq-number">
+                  <span className="ks-faq-number">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="faq-question-text">
+                  <span className="ks-faq-question-text">
                     {item.question}
                   </span>
 
-                  <span className="faq-toggle">
-                    <span className="faq-toggle-line"></span>
-                    <span className="faq-toggle-line vertical"></span>
+                  <span
+                    className="ks-faq-icon"
+                    aria-hidden="true"
+                  >
+                    <span />
+                    <span />
                   </span>
                 </button>
 
                 <div
-                  className="faq-answer-wrapper"
+                  className="ks-faq-answer-wrap"
                   id={answerId}
                   aria-hidden={!isOpen}
                   inert={!isOpen}
                 >
-                  <div className="faq-answer-inner">
-                    <p className="faq-answer">{item.answer}</p>
+                  <div className="ks-faq-answer-inner">
+                    <p>{item.answer}</p>
                   </div>
                 </div>
               </article>
@@ -168,38 +128,35 @@ const FAQ = () => {
         </div>
 
         {/* Contact CTA */}
-        <div className="faq-cta">
-          <div className="faq-cta-icon">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"
-                stroke="currentColor"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+        <div className="ks-faq-cta">
+          <div className="ks-faq-cta-text">
+            <span className="ks-faq-cta-small">
+              NEED MORE INFORMATION?
+            </span>
 
-          <div className="faq-cta-content">
-            <h3>Still have questions?</h3>
+            <h3>Let’s talk about your ideas.</h3>
+
             <p>
-              Our team is ready to help you find the right solution.
+              Our team is ready to help with your business
+              requirements and digital solutions.
             </p>
           </div>
 
-          <a href="/contact" className="faq-contact-btn">
-            Contact Us
+          <a
+            className="ks-faq-cta-button"
+            href="https://wa.me/918807754570"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact KSquare Softtech on WhatsApp"
+          >
+            Chat with Us
             <span aria-hidden="true">↗</span>
           </a>
         </div>
+
       </div>
     </section>
   );
-};
+}
 
 export default FAQ;

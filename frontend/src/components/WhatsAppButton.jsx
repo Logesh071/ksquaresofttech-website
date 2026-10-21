@@ -3,7 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import "../styles/WhatsAppButton.css";
 
 function WhatsAppButton() {
-  const phoneNumber = "919876543210"; // Un WhatsApp number podu
+  const phoneNumber = "918807754570";
   const message = encodeURIComponent(
     "Hi KSquare Softtech, I need more details about your services."
   );

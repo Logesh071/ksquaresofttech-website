@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Footer.css";
@@ -22,204 +21,193 @@ const services = [
   "IT Training",
 ];
 
+const socials = [
+  { label: "Instagram", text: "ig", url: "https://www.instagram.com/" },
+  { label: "LinkedIn", text: "in", url: "https://www.linkedin.com/" },
+  { label: "Facebook", text: "f", url: "https://www.facebook.com/" },
+  { label: "YouTube", text: "▶", url: "https://www.youtube.com/" },
+];
+
 function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+
+  const scrollToTop = (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="ks-footer">
-      {/* MAIN FOOTER */}
-      <div className="ks-footer-main">
-        <div className="ks-footer-container">
-          <div className="ks-footer-grid">
-            {/* BRAND */}
-            <div className="ks-footer-brand">
-              <Link
-                to="/"
-                className="ks-footer-logo"
-                aria-label="KSquare Softtech home"
-              >
-                <span className="ks-footer-logo-mark">K</span>
+      <div className="ks-footer-container">
+        <div className="ks-footer-grid">
+          {/* BRAND */}
+          <section className="ks-footer-brand">
+            <Link
+              to="/"
+              className="ks-footer-logo"
+              aria-label="KSquare Softtech home"
+            >
+              <span className="ks-footer-logo-mark">K</span>
 
-                <span className="ks-footer-logo-text">
-                  <strong>KSQUARE</strong>
-                  <span>SOFTTECH</span>
-                </span>
-              </Link>
+              <span className="ks-footer-logo-text">
+                <strong>KSQUARE</strong>
+                <small>SOFTTECH</small>
+              </span>
+            </Link>
 
-              <p className="ks-footer-tagline">
-                Learn Skills. Build Careers.
-              </p>
+            <p className="ks-footer-tagline">Learn Skills. Build Careers.</p>
 
-              <p className="ks-footer-description">
-                We help businesses grow with modern digital solutions
-                and empower students through practical IT training
-                and career-focused learning.
-              </p>
+            <p className="ks-footer-description">
+              We help businesses grow with modern digital solutions and empower
+              students through practical IT training and career-focused
+              learning.
+            </p>
 
-              <div className="ks-footer-socials">
+            <div className="ks-footer-socials">
+              {socials.map((social) => (
                 <a
-                  href="https://www.instagram.com/"
+                  key={social.label}
+                  href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram"
+                  aria-label={social.label}
+                  title={social.label}
                 >
-                  IG
+                  {social.text}
                 </a>
-
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  in
-                </a>
-
-                <a
-                  href="https://www.facebook.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  f
-                </a>
-
-                <a
-                  href="https://www.youtube.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                >
-                  ▶
-                </a>
-              </div>
+              ))}
             </div>
+          </section>
 
-            {/* QUICK LINKS */}
-            <div className="ks-footer-column">
-              <h3>Quick Links</h3>
+          {/* QUICK LINKS */}
+          <nav className="ks-footer-column">
+            <h3>Quick Links</h3>
 
-              <ul>
-                {quickLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link to={item.path}>
-                      <span aria-hidden="true">↗</span>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul>
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.path}>
+                    <span className="ks-footer-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                    <span className="ks-footer-link-text">{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* SERVICES */}
-            <div className="ks-footer-column">
-              <h3>Our Services</h3>
+          {/* SERVICES */}
+          <nav className="ks-footer-column">
+            <h3>Our Services</h3>
 
-              <ul>
-                {services.map((service) => (
-                  <li key={service}>
-                    <Link to="/services">
-                      <span aria-hidden="true">↗</span>
-                      {service}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul>
+              {services.map((service) => (
+                <li key={service}>
+                  <Link to="/services">
+                    <span className="ks-footer-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                    <span className="ks-footer-link-text">{service}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* CONTACT */}
-            <div className="ks-footer-column ks-footer-contact">
-              <h3>Get In Touch</h3>
+          {/* CONTACT */}
+          <section className="ks-footer-column ks-footer-contact">
+            <h3>Get In Touch</h3>
 
-              <div className="ks-footer-contact-item">
-                <span className="ks-footer-contact-icon">☎</span>
-
-                <div>
-                  <span className="ks-footer-contact-label">
-                    Call Us
-                  </span>
-
-                  <a href="tel:+917010798196">
-                    +91 70107 98196
-                  </a>
-                </div>
-              </div>
-
-              <div className="ks-footer-contact-item">
-                <span className="ks-footer-contact-icon">@</span>
-
-                <div>
-                  <span className="ks-footer-contact-label">
-                    Email Us
-                  </span>
-
-                  <a href="mailto:info@ksquaresofttech.org">
-                    info@ksquaresofttech.org
-                  </a>
-                </div>
-              </div>
-
-              <div className="ks-footer-contact-item">
-                <span className="ks-footer-contact-icon">⌖</span>
-
-                <div>
-                  <span className="ks-footer-contact-label">
-                    Our Location
-                  </span>
-
-                  <p>Coimbatore, Tamil Nadu, India</p>
-                </div>
-              </div>
-
-              <a
-                className="ks-footer-whatsapp"
-                href="https://wa.me/917010798196"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Chat on WhatsApp
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-
-          {/* NEWSLETTER / CTA */}
-          <div className="ks-footer-cta">
-            <div>
-              <span className="ks-footer-cta-label">
-                HAVE A PROJECT IN MIND?
+            <a className="ks-footer-contact-item" href="tel:+91 88077 54570">
+              <span className="ks-footer-contact-icon" aria-hidden="true">
+                ☎
               </span>
 
-              <h3>Let's build something great together.</h3>
+              <span className="ks-footer-contact-info">
+                <span className="ks-footer-contact-label">Call Us</span>
+                <span className="ks-footer-contact-value">+91 88077 54570</span>
+              </span>
+            </a>
 
-              <p>
-                Tell us about your idea. Let's find the right solution.
-              </p>
+            <a
+              className="ks-footer-contact-item"
+              href="mailto:info@ksquaresofttech.org"
+            >
+              <span className="ks-footer-contact-icon" aria-hidden="true">
+                @
+              </span>
+
+              <span className="ks-footer-contact-info">
+                <span className="ks-footer-contact-label">Email Us</span>
+                <span className="ks-footer-contact-value">
+                  info@ksquaresofttech.org
+                </span>
+              </span>
+            </a>
+
+            <div className="ks-footer-contact-item">
+              <span className="ks-footer-contact-icon" aria-hidden="true">
+                ⌖
+              </span>
+
+              <span className="ks-footer-contact-info">
+                <span className="ks-footer-contact-label">Our Location</span>
+                <span className="ks-footer-contact-value">
+                  Sri Krishna Building, 80/2, Chinthamanipudur, Coimbatore,
+                  Pallapalayam, Tamil Nadu 641103
+                </span>
+              </span>
             </div>
 
-            <Link to="/contact" className="ks-footer-cta-button">
-              Contact Our Team
-              <span aria-hidden="true">↗</span>
-            </Link>
+            <a
+              className="ks-footer-whatsapp"
+              href="https://wa.me/918807754570"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="ks-footer-whatsapp-icon" aria-hidden="true">
+                ◉
+              </span>
+              <span className="ks-footer-whatsapp-text">Chat on WhatsApp</span>
+              <span className="ks-footer-whatsapp-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          </section>
+        </div>
+
+        {/* CTA */}
+        <div className="ks-footer-cta">
+          <div className="ks-footer-cta-content">
+            <span className="ks-footer-cta-label">HAVE A PROJECT IN MIND?</span>
+
+            <h3>Let's build something great together.</h3>
+
+            <p>Tell us about your idea. Let's find the right solution.</p>
           </div>
+
+          <Link to="/contact" className="ks-footer-cta-button">
+            <span>Contact Our Team</span>
+            <span aria-hidden="true">↗</span>
+          </Link>
         </div>
       </div>
 
-      {/* BOTTOM BAR */}
+      {/* COPYRIGHT */}
       <div className="ks-footer-bottom">
-        <div className="ks-footer-container ks-footer-bottom-inner">
+        <div className="ks-footer-bottom-inner">
           <p>
-            © {currentYear} <strong>KSquare Softtech</strong>.
-            All rights reserved.
+            © {year} <strong>KSquare Softtech</strong>. All rights reserved.
           </p>
 
-          <p className="ks-footer-bottom-tagline">
+          <span className="ks-footer-bottom-tagline">
             Learn Skills. Build Careers.
-          </p>
+          </span>
 
-          <Link to="/" className="ks-footer-back-top">
+          <a href="#top" className="ks-footer-back-top" onClick={scrollToTop}>
             Back to top ↑
-          </Link>
+          </a>
         </div>
       </div>
     </footer>

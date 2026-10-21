@@ -1,0 +1,93 @@
+
+[
+  {
+    "id": 1,
+    "category": "Services",
+    "question": "What services does KSquare Softtech provide?",
+    "answer": "KSquare Softtech provides website development, mobile app development, digital marketing, UI/UX design, video editing, and custom software solutions for businesses."
+  },
+  {
+    "id": 2,
+    "category": "Website Development",
+    "question": "Do you develop custom websites for businesses?",
+    "answer": "Yes! We develop modern, responsive, user-friendly, and SEO-friendly websites tailored to your business goals and requirements."
+  },
+  {
+    "id": 3,
+    "category": "Website Development",
+    "question": "Can you develop an e-commerce website?",
+    "answer": "Yes! We can build e-commerce websites with product listings, shopping cart functionality, order management, and payment integration based on your requirements."
+  },
+  {
+    "id": 4,
+    "category": "Mobile App Development",
+    "question": "Do you provide mobile application development?",
+    "answer": "Yes! We provide mobile application development solutions based on your business requirements, target users, and project scope."
+  },
+  {
+    "id": 5,
+    "category": "Digital Marketing",
+    "question": "What digital marketing services do you offer?",
+    "answer": "Our digital marketing services include social media marketing, Meta advertising, content creation, online promotions, and digital brand growth strategies."
+  },
+  {
+    "id": 6,
+    "category": "UI/UX Design",
+    "question": "Do you provide UI/UX design services?",
+    "answer": "Yes! We design modern, user-friendly interfaces for websites and applications, focusing on usability, visual consistency, and user experience."
+  },
+  {
+    "id": 7,
+    "category": "Video Editing",
+    "question": "Do you offer video editing services?",
+    "answer": "Yes! We provide video editing and promotional content creation for businesses, brands, and social media platforms based on project requirements."
+  },
+  {
+    "id": 8,
+    "category": "Software Solutions",
+    "question": "Can you develop custom software for my business?",
+    "answer": "Yes! We can develop custom software solutions based on your business workflow, operational needs, and required features."
+  },
+  {
+    "id": 9,
+    "category": "Projects",
+    "question": "How can I start a project with KSquare Softtech?",
+    "answer": "Contact our team through our website or WhatsApp. Share your requirements so we can discuss project scope, features, timeline, and estimated cost."
+  },
+  {
+    "id": 10,
+    "category": "Pricing",
+    "question": "How much does website development cost?",
+    "answer": "The cost depends on the website type, design, features, integrations, and project complexity. Contact us for a customized quotation."
+  },
+  {
+    "id": 11,
+    "category": "Pricing",
+    "question": "Can I request a customized service package?",
+    "answer": "Yes! We can discuss a suitable service scope and quotation based on your business goals, requirements, and budget."
+  },
+  {
+    "id": 12,
+    "category": "Maintenance",
+    "question": "Do you provide website maintenance and technical support?",
+    "answer": "Yes! Website maintenance, bug fixes, content updates, performance improvements, and technical support can be arranged according to your project requirements."
+  },
+  {
+    "id": 13,
+    "category": "Responsive Design",
+    "question": "Will my website work on mobile phones and tablets?",
+    "answer": "We build responsive websites designed to adapt to mobile phones, tablets, laptops, and desktop computers."
+  },
+  {
+    "id": 14,
+    "category": "Business",
+    "question": "Do you work with startups and small businesses?",
+    "answer": "Yes! We help startups, entrepreneurs, and small businesses strengthen their digital presence through website development, marketing, design, and technology solutions."
+  },
+  {
+    "id": 15,
+    "category": "Contact",
+    "question": "How can I contact KSquare Softtech?",
+    "answer": "You can contact us through our website contact page or WhatsApp at +91 88077 54570 to discuss your business requirements."
+  }
+]
